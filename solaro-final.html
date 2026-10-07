@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SOLARO — Organic Botanical Energy</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#fff9ed",
+            "surface-container": "#f4edde",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#e0daca",
+            "inverse-surface": "#333026",
+            "on-surface-variant": "#4b4734",
+            "background": "#fff9ed",
+            "energetic-orange": "#F47A32",
+            "on-tertiary-container": "#306b01",
+            "on-error-container": "#93000a",
+            "surface": "#fff9ed",
+            "tertiary-fixed": "#b0f582",
+            "surface-tint": "#6d5e00",
+            "surface-container-high": "#eee8d8",
+            "on-primary": "#ffffff",
+            "fresh-leaf": "#6FAF45",
+            "deep-forest": "#18382A",
+            "secondary-container": "#c4e8d3",
+            "warm-cream": "#FFF8E8",
+            "inverse-on-surface": "#f7f0e0",
+            "soft-sand": "#E9DFC7",
+            "outline": "#7d7761",
+            "secondary-fixed-dim": "#abcfbb",
+            "surface-variant": "#e9e2d2",
+            "secondary-fixed": "#c7ebd6",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#6c5e00",
+            "on-secondary-fixed-variant": "#2d4d3e",
+            "surface-container-highest": "#e9e2d2",
+            "on-primary-fixed-variant": "#524600",
+            "tertiary": "#306b01",
+            "tertiary-fixed-dim": "#95d869",
+            "tertiary-container": "#a6eb79",
+            "surface-container-low": "#faf3e3",
+            "on-secondary-fixed": "#002114",
+            "primary-container": "#f4d83d",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#0a2100",
+            "on-surface": "#1e1c12",
+            "outline-variant": "#cec6ad",
+            "solar-yellow": "#F4D83D",
+            "on-tertiary-fixed-variant": "#225100",
+            "primary-fixed-dim": "#e1c62a",
+            "on-secondary-container": "#496959",
+            "error-container": "#ffdad6",
+            "secondary": "#456555",
+            "primary": "#6d5e00",
+            "on-primary-fixed": "#211b00",
+            "primary-fixed": "#ffe247",
+            "on-error": "#ffffff",
+            "inverse-primary": "#e1c62a",
+            "on-background": "#1e1c12"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1.25rem",
+            "gutter-desktop": "2.5rem",
+            "margin-desktop": "4rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Manrope", "sans-serif"],
+            "headline-xl": ["Manrope", "sans-serif"],
+            "headline-lg": ["Manrope", "sans-serif"],
+            "headline-md": ["Manrope", "sans-serif"],
+            "headline-sm": ["Manrope", "sans-serif"],
+            "body-lg": ["Manrope", "sans-serif"],
+            "body-md": ["Manrope", "sans-serif"],
+            "body-sm": ["Manrope", "sans-serif"],
+            "label-caps": ["Manrope", "sans-serif"],
+            "label-spec": ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    /* ══ BASE ══ */
+    html,body{margin:0;padding:0;min-height:100%;width:100%;overflow-x:hidden;overflow-y:auto;background:#fff9ed;color:#18382a;font-family:'Manrope',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+
+    /* ══ LOADING SCREEN ══ */
+    #sol-loader{position:fixed;inset:0;z-index:9999;background:#fff9ed;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .65s cubic-bezier(.4,0,.2,1),visibility .65s}
+    #sol-loader.sol-out{opacity:0;visibility:hidden;pointer-events:none}
+    .sol-loader-logo{display:flex;align-items:center;gap:12px}
+    .sol-loader-sun{width:40px;height:40px;animation:sol-spin 2.5s linear infinite}
+    @keyframes sol-spin{to{transform:rotate(360deg)}}
+    .sol-loader-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;letter-spacing:-.03em;color:#18382a}
+    #sol-bar-track{width:150px;height:2px;border-radius:99px;background:rgba(24,56,42,.1);overflow:hidden}
+    #sol-bar{height:100%;width:0%;background:linear-gradient(90deg,#F4D83D,#6FAF45);border-radius:99px;transition:width .2s ease-out}
+    .sol-loader-sub{font-family:'Manrope',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(24,56,42,.38)}
+
+    /* ══ SCROLL PROGRESS ══ */
+    #sol-progress{position:fixed;top:0;left:0;height:2.5px;width:0%;z-index:61;background:linear-gradient(90deg,#F4D83D,#6FAF45);box-shadow:0 0 10px rgba(244,216,61,.5);pointer-events:none}
+
+    /* ══ CURSOR GLOW ══ */
+    #sol-cglow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(111,175,69,.052) 0%,transparent 68%);transform:translate(-999px,-999px);opacity:0;transition:opacity .5s}
+    body.sol-alive #sol-cglow{opacity:1}
+    @media(hover:none){#sol-cglow{display:none}}
+
+    /* ══ SMART HEADER ══ */
+    header{transition:transform .38s cubic-bezier(.16,1,.3,1),background .3s,box-shadow .3s}
+    header.sol-up{transform:translateY(-100%)}
+
+    /* ══ EXISTING ANIMATIONS (kept) ══ */
+    @keyframes floatSlow{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-16px) rotate(2deg)}}
+    .animate-float{animation:floatSlow 6s ease-in-out infinite;will-change:transform}
+    @keyframes pulseGlow{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.1);opacity:.95}}
+    .animate-pulse-glow{animation:pulseGlow 4s ease-in-out infinite}
+
+    /* ══ HERO TEXT LINE REVEAL ══ */
+    .sol-line-wrap{display:block;overflow:hidden;padding-bottom:.06em}
+    .sol-line-inner{display:block;transform:translateY(108%)}
+    .sol-line-inner.sol-in{transform:translateY(0);transition:transform 1.05s cubic-bezier(.16,1,.3,1)}
+    .sol-line-inner.sol-in:nth-child(1){transition-delay:0s}
+
+    /* Legacy hero-stagger kept as instant-show fallback */
+    .hero-stagger-1,.hero-stagger-2,.hero-stagger-3,.hero-stagger-4{opacity:0}
+
+    /* ══ HERO CAN ENTRANCE ══ */
+    #hero-can-container{
+      opacity:0;
+      transform:translateY(72px) scale(.86) rotate(-5deg);
+      filter:blur(6px);
+    }
+    #hero-can-container.sol-can-in{
+      opacity:1;transform:translateY(0) scale(1.04) rotate(0deg);filter:blur(0);
+      transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1);
+    }
+    #hero-can-container.sol-can-settle{
+      transform:translateY(0) scale(1) rotate(0deg);
+      transition:transform 1.3s cubic-bezier(.34,1.56,.64,1);
+    }
+    #hero-can-container::after{content:'';position:absolute;inset:-25%;border-radius:50%;background:radial-gradient(circle,rgba(244,216,61,.5) 0%,rgba(111,175,69,.22) 45%,transparent 70%);opacity:0;pointer-events:none;z-index:-1;transform:scale(.3)}
+    #hero-can-container.sol-can-glow::after{animation:sol-glowBurst 1.5s cubic-bezier(.16,1,.3,1) forwards}
+    @keyframes sol-glowBurst{0%{opacity:0;transform:scale(.3)}30%{opacity:1;transform:scale(1.05)}100%{opacity:0;transform:scale(1.5)}}
+
+    /* Sparks */
+    .sol-spark{position:absolute;width:5px;height:5px;border-radius:50%;pointer-events:none;opacity:0}
+    .sol-spark.go{animation:sol-sparkFly var(--dur,.85s) cubic-bezier(.16,1,.3,1) var(--del,0s) forwards}
+    @keyframes sol-sparkFly{0%{opacity:.85;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--dx,40px),var(--dy,-70px)) scale(0)}}
+
+    /* ══ SCROLL REVEALS ══ */
+    @media(prefers-reduced-motion:no-preference){
+      .reveal-on-scroll{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);will-change:transform,opacity}
+      .reveal-on-scroll.revealed{opacity:1;transform:none;will-change:auto}
+      .sol-left{opacity:0;transform:translateX(-48px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+      .sol-left.sol-in{opacity:1;transform:none}
+      .sol-right{opacity:0;transform:translateX(48px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+      .sol-right.sol-in{opacity:1;transform:none}
+      .sol-scale{opacity:0;transform:scale(.9) translateY(20px);transition:opacity 1.05s cubic-bezier(.16,1,.3,1),transform 1.05s cubic-bezier(.16,1,.3,1)}
+      .sol-scale.sol-in{opacity:1;transform:none}
+      /* Stagger grid */
+      .sol-stagger>*{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+      .sol-stagger.sol-in>*{opacity:1;transform:none}
+      .sol-stagger.sol-in>*:nth-child(1){transition-delay:.00s}
+      .sol-stagger.sol-in>*:nth-child(2){transition-delay:.08s}
+      .sol-stagger.sol-in>*:nth-child(3){transition-delay:.16s}
+      .sol-stagger.sol-in>*:nth-child(4){transition-delay:.24s}
+      .sol-stagger.sol-in>*:nth-child(5){transition-delay:.32s}
+      .sol-stagger.sol-in>*:nth-child(6){transition-delay:.40s}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .reveal-on-scroll,.sol-left,.sol-right,.sol-scale,.sol-stagger>*,.sol-line-inner,
+      .hero-stagger-1,.hero-stagger-2,.hero-stagger-3,.hero-stagger-4,#hero-can-container{
+        opacity:1!important;transform:none!important;filter:none!important;animation:none!important;transition:none!important
+      }
+    }
+
+    /* ══ RIPPLE ══ */
+    .sol-rip{position:relative;overflow:hidden}
+    .sol-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.28);width:10px;height:10px;transform:scale(0);pointer-events:none;animation:sol-ripAnim .55s ease-out forwards}
+    @keyframes sol-ripAnim{to{transform:scale(26);opacity:0}}
+
+    /* ══ 3D CARD TILT ══ */
+    .flavor-card{transform-style:preserve-3d;transition:box-shadow .2s ease}
+    .flavor-card:hover{box-shadow:0 26px 50px -14px rgba(24,56,42,.2)}
+
+    /* ══ MAGNETIC ══ */
+    .sol-mag{transition:transform .3s cubic-bezier(.16,1,.3,1)}
+
+    /* ══ HERO CAN WRAPPER (parallax) ══ */
+    .hero-can-wrapper{transition:transform .15s ease-out;transform-style:preserve-3d;perspective:1000px}
+
+    /* ══ COUNT-UP SETTLE ══ */
+    @keyframes sol-settle{0%{text-shadow:0 0 20px rgba(244,216,61,.8)}100%{text-shadow:none}}
+    .sol-settle{animation:sol-settle 1.2s ease-out}
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-solar-yellow selection:text-deep-forest flex flex-col min-h-screen">
+<div id="sol-loader" aria-hidden="true">
+  <div class="sol-loader-logo">
+    <svg class="sol-loader-sun" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="13" stroke="#F4D83D" stroke-width="3.5"/>
+      <line x1="32" y1="5"  x2="32" y2="13" stroke="#18382A" stroke-width="3" stroke-linecap="round"/>
+      <line x1="32" y1="51" x2="32" y2="59" stroke="#18382A" stroke-width="3" stroke-linecap="round"/>
+      <line x1="5"  y1="32" x2="13" y2="32" stroke="#18382A" stroke-width="3" stroke-linecap="round"/>
+      <line x1="51" y1="32" x2="59" y2="32" stroke="#18382A" stroke-width="3" stroke-linecap="round"/>
+      <line x1="12" y1="12" x2="18" y2="18" stroke="#18382A" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="46" y1="46" x2="52" y2="52" stroke="#18382A" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="52" y1="12" x2="46" y2="18" stroke="#18382A" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="18" y1="46" x2="12" y2="52" stroke="#18382A" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <span class="sol-loader-name">SOLARO</span>
+  </div>
+  <div id="sol-bar-track"><div id="sol-bar"></div></div>
+  <span class="sol-loader-sub">Organic · Natural · Fresh</span>
+</div>
+<div id="sol-progress"></div>
+<div id="sol-cglow"></div>
+<!-- TOP NAVIGATION HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-surface/90 backdrop-blur-md border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(24,56,42,0.06)]">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md py-2.5">
+<!-- Logo -->
+<div class="flex items-center gap-space-md flex-shrink-0">
+<a class="flex items-center gap-space-sm transition-transform hover:scale-105 duration-300" href="#">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%E2%98%80%EF%B8%8F%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%3C/text%3E%3C/svg%3E'" alt="SOLARO Brand Logo" class="h-10 md:h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDStgdlh7U8o0__WNRGbQK2qGvg_WpVbmSfrVT9f5Gcxw2gVx4fq8FYZJiUGfp5jbuMiCIf1CadQ0Y2eBCRaRnPU7t6c7e6CsaIOU5XM3Vy_Oyk3xbbr27HjVvrIksmg-lkZ1IduYtBXxHxeo4U8gOmBYC5YerQZtzVq5Eq6VZAp9sdEX2IDOXuvxTAg9QZrVmNgygsT1D5c7Al1NNTbpgKH8U3BZCkx3DgTmGjzxzgH7kEkBd4okYF"/>
+</a>
+</div>
+<!-- Nav Links -->
+<nav class="hidden lg:flex items-center gap-gutter-desktop">
+<a class="font-headline-sm text-sm text-on-surface-variant hover:text-deep-forest transition-all duration-300 relative py-space-xs after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-deep-forest hover:after:w-full after:transition-all" href="#flavors">Drinks</a>
+<a class="font-headline-sm text-sm text-on-surface-variant hover:text-deep-forest transition-all duration-300 relative py-space-xs after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-deep-forest hover:after:w-full after:transition-all" href="#ingredients">Our Ingredients</a>
+<a class="font-headline-sm text-sm text-on-surface-variant hover:text-deep-forest transition-all duration-300 relative py-space-xs after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-deep-forest hover:after:w-full after:transition-all" href="#sustainability">Sustainability</a>
+<a class="font-headline-sm text-sm text-on-surface-variant hover:text-deep-forest transition-all duration-300 relative py-space-xs after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-deep-forest hover:after:w-full after:transition-all" href="#mixology">Mixology</a>
+<a class="font-headline-sm text-sm text-on-surface-variant hover:text-deep-forest transition-all duration-300 relative py-space-xs after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-deep-forest hover:after:w-full after:transition-all" href="#story">Our Story</a>
+<a class="font-headline-sm text-sm text-on-surface-variant hover:text-deep-forest transition-all duration-300 relative py-space-xs after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-deep-forest hover:after:w-full after:transition-all" href="#find-us">Find Us</a>
+</nav>
+<!-- Right CTAs -->
+<div class="flex items-center gap-space-md flex-shrink-0">
+<a class="inline-flex items-center justify-center bg-solar-yellow text-deep-forest font-headline-sm text-xs font-bold uppercase tracking-wider px-space-lg py-2.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-sm cursor-pointer shop-trigger animate-pulse-glow" href="#flavors">
+  Shop Drinks
+</a>
+<button aria-label="Cart" class="w-10 h-10 rounded-full flex items-center justify-center text-deep-forest hover:bg-surface-container-high transition-all duration-300 active:scale-95 cursor-pointer shop-trigger relative" type="button">
+<span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+<span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-deep-forest text-warm-cream text-[10px] flex items-center justify-center font-bold" id="cart-badge">2</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-deep-forest flex items-center justify-center text-warm-cream shadow-sm cursor-pointer hover:scale-105 transition-transform duration-300" title="User Profile">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- SLIDE-OVER SHOPPING CART DRAWER -->
+<div class="fixed inset-0 z-50 overflow-hidden pointer-events-none opacity-0 transition-opacity duration-300" id="cart-drawer">
+<div class="absolute inset-0 bg-deep-forest/40 backdrop-blur-sm transition-opacity" id="cart-backdrop"></div>
+<div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+<div class="w-screen max-w-md bg-surface border-l border-surface-container-high shadow-2xl transform transition-transform duration-300 translate-x-full flex flex-col" id="cart-panel">
+<div class="p-6 border-b border-surface-container-high flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-deep-forest">shopping_bag</span>
+<h3 class="font-headline-sm text-lg text-deep-forest font-bold">Your Cart (<span class="" id="drawer-count">2</span>)</h3>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container cursor-pointer transition-colors" id="close-cart" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-4" id="cart-items-container">
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/20 cart-item transition-all duration-300 hover:shadow-md" data-id="1" data-price="2.90">
+<div class="w-16 h-16 rounded-xl bg-solar-yellow/20 flex items-center justify-center flex-shrink-0 p-1">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%F0%9F%A5%A4%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Citrus%20%2B%20Mint%3C/text%3E%3C/svg%3E'" alt="Citrus + Mint" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjA-GhWORTPoue9woeNhDr0j8WJGymhtIzyWkcx-CXrftrUwwFZk8oZRa-0zWh2HdCrK9dTz3CAMS3HfXGWekBhlakVd7P5ULlz1LX-qNxW_7yDAAuDWndzz9dVtc2mNjQ3FEdrPWvKoHo8K7Q_l7XclF_o98lylSAxeZ8SnvAO0guy7GdgA-A3SFEWKEGqor7YEa8toMTiE2e-7qawUub79pNFQyWBUsENAUXX9uRWlg-8IOeVdeu"/>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-sm text-sm text-deep-forest font-bold">Citrus + Mint (330ml)</h4>
+<p class="font-body-sm text-xs text-on-surface-variant">€2.90 each</p>
+<div class="flex items-center gap-3 mt-2">
+<button class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-deep-forest font-bold text-xs qty-minus transition-transform active:scale-95">-</button>
+<span class="font-headline-sm text-xs font-bold qty-val">1</span>
+<button class="w-6 h-6 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center font-bold text-xs qty-plus transition-transform active:scale-95">+</button>
+</div>
+</div>
+<button class="text-error hover:opacity-80 remove-item cursor-pointer transition-transform hover:scale-110">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/20 cart-item transition-all duration-300 hover:shadow-md" data-id="2" data-price="2.90">
+<div class="w-16 h-16 rounded-xl bg-energetic-orange/20 flex items-center justify-center flex-shrink-0 p-1">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%20viewBox%3D%270%200%20400%20300%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23f4ecd0%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23d4e8c4%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27400%27%20height%3D%27300%27%20fill%3D%27url%28%23g%29%27/%3E%3Ctext%20x%3D%27200%27%20y%3D%27155%27%20font-size%3D%2714%27%20text-anchor%3D%27middle%27%20fill%3D%27rgba%2824%2C56%2C42%2C.5%29%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20%C2%B7%20Organic%20Sparkling%3C/text%3E%3C/svg%3E'" alt="Blood Orange" class="w-full h-full object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida/AEtjO1WKqF9oTkn81bfnC_cnF3ztnjiCbN-TNlmlx_2FMhcr8kRy2YBqjj6dMq0kkwUzgc0mzkHu3Kik-K6JkHDEAmQRp5GXsgd02XFIWcAZoI-G5vr7ALrzN_7b1AfrIe9FhqUDiYeS7csD3oFgUWLqZ5HHBECCzWAK0pmiK9lDALRGQ1JsveX7njd0ThclcVBKGM-h-EMKT8ULb3CLnfD1Pv_I1jPVempISvzhJwY-HvWLM8zi1NjcAPIsvdk"/>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-sm text-sm text-deep-forest font-bold">Blood Orange (330ml)</h4>
+<p class="font-body-sm text-xs text-on-surface-variant">€2.90 each</p>
+<div class="flex items-center gap-3 mt-2">
+<button class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-deep-forest font-bold text-xs qty-minus transition-transform active:scale-95">-</button>
+<span class="font-headline-sm text-xs font-bold qty-val">1</span>
+<button class="w-6 h-6 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center font-bold text-xs qty-plus transition-transform active:scale-95">+</button>
+</div>
+</div>
+<button class="text-error hover:opacity-80 remove-item cursor-pointer transition-transform hover:scale-110">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="p-6 border-t border-surface-container-high bg-surface-container-low space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-on-surface-variant">Subtotal</span>
+<span class="font-headline-sm text-lg font-bold text-deep-forest" id="cart-subtotal">€5.80</span>
+</div>
+<button class="w-full py-3.5 rounded-full bg-deep-forest text-warm-cream font-headline-sm text-xs font-bold uppercase tracking-wider hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 shadow-lg cursor-pointer flex items-center justify-center gap-2 transform hover:-translate-y-0.5" id="checkout-btn">
+<span class="">Proceed to Checkout</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- QUICK VIEW / ADD TO CART MODAL -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none opacity-0 transition-opacity duration-300" id="quickview-modal">
+<div class="absolute inset-0 bg-deep-forest/40 backdrop-blur-sm transition-opacity" id="modal-backdrop"></div>
+<div class="relative w-full max-w-lg bg-surface rounded-3xl p-6 md:p-8 shadow-2xl border border-outline-variant/30 transform transition-all duration-300 scale-95 flex flex-col" id="modal-panel">
+<button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-deep-forest cursor-pointer hover:bg-surface-container-high transition-colors" id="close-modal">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<div class="flex flex-col sm:flex-row gap-6 items-center">
+<div class="w-40 h-48 rounded-2xl bg-surface-container-low flex items-center justify-center p-2 flex-shrink-0">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%20viewBox%3D%270%200%20400%20300%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23f4ecd0%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23d4e8c4%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27400%27%20height%3D%27300%27%20fill%3D%27url%28%23g%29%27/%3E%3Ctext%20x%3D%27200%27%20y%3D%27155%27%20font-size%3D%2714%27%20text-anchor%3D%27middle%27%20fill%3D%27rgba%2824%2C56%2C42%2C.5%29%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20%C2%B7%20Organic%20Sparkling%3C/text%3E%3C/svg%3E'" alt="Product" class="w-full h-full object-contain" id="modal-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_um7S9DfsvNLOWVNpc0EjwvZBg1GyG9CIPAxY8w2ntosg6Y_-Ptc5P1ynh23ln5Ol6_ZFTn85RBca-SGiyYeUUUSb2BKWDY_TAfp0m8VmYQY_jz_h-Mr1a2pKkgP2CKgeM2ZE7PUhChrtHwi4o15TbKZ_7qhjYt-7ci1WXh386S4ygrHo5VDVg9d0a3tiO-s90PhEG5rJnUcYZzXjpfDDmzbvnzNm704VuREs_Zc16me-O0okFJo-"/>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="px-3 py-1 rounded-full bg-solar-yellow/30 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider w-max mb-2" id="modal-tag">Citrus • Herb</span>
+<h3 class="font-headline-sm text-2xl text-deep-forest font-bold mb-1" id="modal-title">Citrus + Mint</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-4" id="modal-desc">Bright Sicilian lemon, zesty green lime, and crisp garden spearmint.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-headline-sm text-xl text-deep-forest font-bold" id="modal-price">€2.90</span>
+<button class="px-6 py-2.5 rounded-full bg-deep-forest text-warm-cream font-headline-sm text-xs font-bold uppercase tracking-wider hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 shadow-sm cursor-pointer transform hover:scale-105" id="modal-add-btn">
+            Add to Cart
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATION -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-deep-forest text-warm-cream px-6 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 border border-warm-cream/20" id="toast">
+<span class="material-symbols-outlined text-solar-yellow">check_circle</span>
+<span class="font-headline-sm text-xs font-bold uppercase tracking-wider" id="toast-msg">Added to cart successfully!</span>
+</div>
+<!-- MAIN PAGE CONTENT -->
+<main class="w-full flex-grow bg-surface">
+<!-- HERO SECTION -->
+<section class="relative w-full overflow-hidden bg-gradient-to-b from-solar-yellow/25 via-warm-cream to-surface min-h-[92vh] flex flex-col justify-center pt-24 pb-12" id="hero-section">
+<!-- Glow ambient backdrop with smooth pulsing aura -->
+<div aria-hidden="true" class="pointer-events-none absolute -top-40 right-1/4 h-[580px] w-[580px] rounded-full bg-solar-yellow/35 blur-3xl animate-pulse-glow"></div>
+<div aria-hidden="true" class="pointer-events-none absolute top-1/3 -left-32 h-[420px] w-[420px] rounded-full bg-fresh-leaf/15 blur-3xl"></div>
+<div aria-hidden="true" class="pointer-events-none absolute bottom-10 right-10 h-[300px] w-[300px] rounded-full bg-solar-yellow/20 blur-2xl"></div>
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop relative z-10 my-auto py-4">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-gutter-desktop items-center">
+<!-- Text Content -->
+<div class="flex flex-col items-start pr-0 lg:pr-6 lg:col-span-6">
+<h1 class="font-display-hero text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] text-deep-forest font-extrabold uppercase leading-[1.02] tracking-tighter mb-4">
+  <span class="sol-line-wrap"><span class="sol-line-inner">Good Energy,</span></span>
+  <span class="sol-line-wrap" style="padding-bottom:.1em"><span class="sol-line-inner">
+    <span class="relative inline-block text-deep-forest">In Every Sip.<span class="absolute left-0 -bottom-2 w-full h-3 bg-solar-yellow/70 -z-10 rounded-full transition-all duration-700 scale-x-0 origin-left" id="hero-ul"></span></span>
+  </span></span>
+</h1>
+<p class="sol-hero-2 font-body-lg text-base md:text-lg text-on-surface-variant max-w-xl mb-6 font-normal leading-relaxed">
+  Organic ingredients. Bright natural flavors. Nothing unnecessary. Crafted for mindful refreshment from morning rituals to golden hour.
+</p>
+<div class="sol-hero-3 flex flex-wrap items-center gap-space-md w-full sm:w-auto">
+<a class="inline-flex items-center justify-center bg-deep-forest text-warm-cream font-headline-sm text-xs md:text-sm font-bold uppercase tracking-wider px-8 py-3.5 rounded-full shadow-lg hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 cursor-pointer shop-trigger group sol-rip sol-mag" href="#flavors">
+    Explore the drinks
+    <span class="material-symbols-outlined ml-2 text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center bg-surface-container-lowest/90 text-deep-forest font-headline-sm text-xs md:text-sm font-bold uppercase tracking-wider px-7 py-3.5 rounded-full shadow-sm hover:bg-surface-container-high transition-all duration-300 border border-outline-variant/40 hover:scale-105 active:scale-95 cursor-pointer shop-trigger" href="#showcase">
+    Shop the collection
+  </a>
+</div>
+<div class="sol-hero-4 grid grid-cols-3 gap-6 mt-6 pt-4 border-t border-surface-container-high w-full max-w-lg">
+<div class="transition-transform duration-300 hover:scale-105">
+<p class="font-headline-md text-2xl md:text-3xl text-deep-forest font-bold">100%</p>
+<p class="font-headline-sm text-xs text-on-surface-variant uppercase font-semibold tracking-wider mt-1">Bio Certified</p>
+</div>
+<div class="transition-transform duration-300 hover:scale-105">
+<p class="font-headline-md text-2xl md:text-3xl text-deep-forest font-bold">6-8°C</p>
+<p class="font-headline-sm text-xs text-on-surface-variant uppercase font-semibold tracking-wider mt-1">Optimal Chill</p>
+</div>
+<div class="transition-transform duration-300 hover:scale-105">
+<p class="font-headline-md text-2xl md:text-3xl text-deep-forest font-bold">Zero</p>
+<p class="font-headline-sm text-xs text-on-surface-variant uppercase font-semibold tracking-wider mt-1">Added Sugar</p>
+</div>
+</div>
+</div>
+<!-- Hero Image with 3D Parallax & Floating Animation -->
+<div class="relative flex justify-center items-center py-4 lg:col-span-6 transform transition-transform lg:translate-x-10" id="hero-interactive-stage">
+<div class="relative w-full aspect-[4/5] flex items-center justify-center max-w-[540px] select-none">
+<div aria-hidden="true" class="absolute inset-4 rounded-full bg-gradient-to-tr from-solar-yellow/50 via-warm-cream to-fresh-leaf/25 blur-3xl transform scale-105 -z-10 animate-pulse-glow"></div>
+<!-- Tilt wrapper for cursor parallax + floating animation -->
+<div class="hero-can-wrapper animate-float flex items-center justify-center w-full h-full" id="hero-can-container">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%F0%9F%A5%A4%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Citrus%20%2B%20Mint%3C/text%3E%3C/svg%3E'" alt="SOLARO Citrus + Mint 330ml Organic Sparkling Can" class="w-full h-full max-h-[78vh] object-contain drop-shadow-[0_25px_35px_rgba(24,56,42,0.18)] duration-500 scale-105 select-none transition-all hover:scale-110" id="hero-can-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwr83LPoHumSWE5WUjD6wdpPTc7Lu-akuyzBUZywiLjBWBIR1gKf5okXcIP8JXYm81dgYxfszstTmvNNLnhbqZ8BYAX-hlb7KzrBqRCjsTZJag9zYvQGtSjq8VbWs7kkzRD2lOPhs7VuqUpBwuER5iY_MLtq-M74bqdu8zjjq3auH5_AwIAZ8iZIUU1j4McfsIYHiMhcv4MhIFz2NiSQAaTT6admqZNma6Iaq03q48DMNqRL4VsGcb"/>
+</div>
+</div>
+<div class="absolute -top-6 -left-6 w-20 h-20 bg-fresh-leaf/20 rounded-full blur-xl animate-float"></div>
+<div class="absolute bottom-2 -right-8 w-24 h-24 bg-solar-yellow/30 rounded-full blur-xl animate-float" style="animation-delay: 2s;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- RUNNING TICKER -->
+<div class="w-full bg-deep-forest border-t border-b border-warm-cream/10 py-3.5 overflow-hidden relative select-none z-10 shadow-inner" style="background-color: #12281D;"><style>@keyframes solaroMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } } .solaro-ticker-track { display: flex; width: max-content; animation: solaroMarquee 26s linear infinite; } .solaro-ticker-track:hover { animation-play-state: paused; }</style><div class="solaro-ticker-track flex items-center"><div class="flex items-center gap-10 px-6 font-headline-sm text-xs tracking-[0.2em] uppercase font-medium whitespace-nowrap text-warm-cream"><span class="flex items-center gap-4">100% Certified Organic <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="12" r="7" stroke-dasharray="1 2"></circle><path d="M12 5v14"></path><path d="M5 12h14"></path><path d="m7.05 7.05 9.9 9.9"></path><path d="m7.05 16.95 9.9-9.9"></path></svg></span><span class="flex items-center gap-4">Zero Artificial Sweeteners <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M19.5 4.5c-4.5-2-11 1.5-13.5 5-2.5 3.5-2.5 8 1 11.5s8 3.5 11.5 1c3.5-2.5 7-9 5-13.5l-4-4Z"></path><path d="M13 11a4 4 0 0 0-4 4"></path><path d="M17 7a8 8 0 0 0-8 8"></path><path d="M18 2c0 2-1 3.5-3 4"></path></svg></span><span class="flex items-center gap-4">Lightly Sparkling <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 20.5c-4.5 0-7.5-3.5-7.5-8.5a7.5 7.5 0 0 1 15 0c0 5-3 8.5-7.5 8.5Z"></path><path d="M12 7.5c-1-2.5-1-4-0.5-5.5"></path><path d="M12 5c2-1 4.5-1 5 1-1.5 1.5-3.5 1.5-5-1Z"></path></svg></span><span class="flex items-center gap-4">Crafted In Europe <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="12" r="7" stroke-dasharray="1 2"></circle><path d="M12 5v14"></path><path d="M5 12h14"></path><path d="m7.05 7.05 9.9 9.9"></path><path d="m7.05 16.95 9.9-9.9"></path></svg></span><span class="flex items-center gap-4">Pure Botanical Infusions <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M19.5 4.5c-4.5-2-11 1.5-13.5 5-2.5 3.5-2.5 8 1 11.5s8 3.5 11.5 1c3.5-2.5 7-9 5-13.5l-4-4Z"></path><path d="M13 11a4 4 0 0 0-4 4"></path><path d="M17 7a8 8 0 0 0-8 8"></path><path d="M18 2c0 2-1 3.5-3 4"></path></svg></span><span class="flex items-center gap-4">Naturally Refreshing <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 20.5c-4.5 0-7.5-3.5-7.5-8.5a7.5 7.5 0 0 1 15 0c0 5-3 8.5-7.5 8.5Z"></path><path d="M12 7.5c-1-2.5-1-4-0.5-5.5"></path><path d="M12 5c2-1 4.5-1 5 1-1.5 1.5-3.5 1.5-5-1Z"></path></svg></span></div><div aria-hidden="true" class="flex items-center gap-10 px-6 font-headline-sm text-xs tracking-[0.2em] uppercase font-medium whitespace-nowrap text-warm-cream"><span class="flex items-center gap-4">100% Certified Organic <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="12" r="7" stroke-dasharray="1 2"></circle><path d="M12 5v14"></path><path d="M5 12h14"></path><path d="m7.05 7.05 9.9 9.9"></path><path d="m7.05 16.95 9.9-9.9"></path></svg></span><span class="flex items-center gap-4">Zero Artificial Sweeteners <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M19.5 4.5c-4.5-2-11 1.5-13.5 5-2.5 3.5-2.5 8 1 11.5s8 3.5 11.5 1c3.5-2.5 7-9 5-13.5l-4-4Z"></path><path d="M13 11a4 4 0 0 0-4 4"></path><path d="M17 7a8 8 0 0 0-8 8"></path><path d="M18 2c0 2-1 3.5-3 4"></path></svg></span><span class="flex items-center gap-4">Lightly Sparkling <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 20.5c-4.5 0-7.5-3.5-7.5-8.5a7.5 7.5 0 0 1 15 0c0 5-3 8.5-7.5 8.5Z"></path><path d="M12 7.5c-1-2.5-1-4-0.5-5.5"></path><path d="M12 5c2-1 4.5-1 5 1-1.5 1.5-3.5 1.5-5-1Z"></path></svg></span><span class="flex items-center gap-4">Crafted In Europe <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="12" r="7" stroke-dasharray="1 2"></circle><path d="M12 5v14"></path><path d="M5 12h14"></path><path d="m7.05 7.05 9.9 9.9"></path><path d="m7.05 16.95 9.9-9.9"></path></svg></span><span class="flex items-center gap-4">Pure Botanical Infusions <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M19.5 4.5c-4.5-2-11 1.5-13.5 5-2.5 3.5-2.5 8 1 11.5s8 3.5 11.5 1c3.5-2.5 7-9 5-13.5l-4-4Z"></path><path d="M13 11a4 4 0 0 0-4 4"></path><path d="M17 7a8 8 0 0 0-8 8"></path><path d="M18 2c0 2-1 3.5-3 4"></path></svg></span><span class="flex items-center gap-4">Naturally Refreshing <svg class="w-4 h-4 text-solar-yellow inline-flex flex-shrink-0 transition-transform hover:rotate-45 duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 20.5c-4.5 0-7.5-3.5-7.5-8.5a7.5 7.5 0 0 1 15 0c0 5-3 8.5-7.5 8.5Z"></path><path d="M12 7.5c-1-2.5-1-4-0.5-5.5"></path><path d="M12 5c2-1 4.5-1 5 1-1.5 1.5-3.5 1.5-5-1Z"></path></svg></span></div></div></div>
+<!-- PRODUCT LINEUP / FLAVOR COLLECTION -->
+<section class="w-full py-20 md:py-32 bg-surface relative" id="flavors">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl reveal-on-scroll">
+<div class="max-w-2xl">
+<span class="font-headline-sm text-xs text-primary uppercase tracking-wider block mb-2 font-bold">01 / The Lineup</span>
+<h2 class="font-headline-xl text-3xl md:text-5xl text-deep-forest font-extrabold tracking-tight">
+  Find your flavor.
+</h2>
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant mt-2">
+  Naturally refreshing combinations crafted with sun-ripened organic fruits and wild-harvested European botanicals.
+</p>
+</div>
+<div class="mt-4 md:mt-0 flex gap-2"></div>
+</div>
+<!-- 4 Flavor Bento Cards with All Restored Images -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Flavor 01: Citrus + Mint -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-outline-variant/30 reveal-on-scroll flavor-card cursor-pointer" data-desc="Bright Sicilian lemon, zesty green lime, and crisp garden spearmint for immediate mental clarity." data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuDWE1K41ajKscr2YQcavFPI3_NVKDYPhC1ULCDxsXru0vmfaoATPM-h9KWR9dbERY00Q0FIyr7BQ8Mz4kpt-HGyRjF9FmQoPlIKeow9giKL70nMoPz2O2hDnzkYcSohR12lEcN_Y2g-9AE1i12r-HpQFPXlajqbzJDX6-jbLLBvwrwppgelVXQqml9gw6PlKcxJCqbrqh8DqM2Dz55cAystm8n754rWKqBVgCK7eGX-LX0SegaG4xq5" data-price="€2.90" data-tag="Citrus • Herb" data-title="Citrus + Mint">
+<div class="flex justify-between items-start mb-4">
+<span class="font-headline-sm text-xs font-bold text-deep-forest/40 uppercase tracking-wider">01</span>
+<span class="px-3 py-1 rounded-full bg-solar-yellow/30 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider">Citrus • Herb</span>
+</div>
+<div class="relative w-full h-64 rounded-xl overflow-hidden mb-6 flex items-center justify-center bg-gradient-to-b from-solar-yellow/20 to-surface-container-high/40 p-4">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%F0%9F%A5%A4%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Citrus%20%2B%20Mint%3C/text%3E%3C/svg%3E'" alt="SOLARO Citrus + Mint Can" class="w-full h-full object-contain transform transition-transform duration-700 group-hover:scale-110 drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIKS2q6zyWnCTWRR13cdJQItTD0wR2eNT-PgJOfdwZBN6dPDSATFZ_GPk-xpFAYXG0LliLgusYaSvEWVCn9-qcLoyb-1CM4QTXwmQAGZHDAKDNEYnaKZEvW2j2T7AA6F3ZaQP_nrYQ9ok1kKbNcxGgJlnAAYC9Dbxypm93BQOvBBAtcE_eE_s6AExnHq9_PGpcdTZcpG6EauIOFU_CUmA3fhWH2mzD9ztefaXpq7-Zz8Pmtw42yoOl"/>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-xl text-deep-forest font-bold mb-1 group-text transition-colors group-hover:text-primary">Citrus + Mint</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-4 flex-grow">
+  Bright Sicilian lemon, zesty green lime, and crisp garden spearmint for immediate mental clarity.
+</p>
+<div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-headline-sm text-lg text-deep-forest font-bold">€2.90</span>
+<button aria-label="Add Citrus Mint to cart" class="w-10 h-10 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 transform active:scale-95 shadow-sm add-cart-btn cursor-pointer" data-name="Citrus + Mint" data-price="2.90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Flavor 02: Blood Orange -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-outline-variant/30 reveal-on-scroll flavor-card cursor-pointer" data-desc="Sun-drenched Calabrian blood oranges with subtle tart pomegranate nuance and persistent micro-bubbles." data-img="https://lh3.googleusercontent.com/aida/AEtjO1WKqF9oTkn81bfnC_cnF3ztnjiCbN-TNlmlx_2FMhcr8kRy2YBqjj6dMq0kkwUzgc0mzkHu3Kik-K6JkHDEAmQRp5GXsgd02XFIWcAZoI-G5vr7ALrzN_7b1AfrIe9FhqUDiYeS7csD3oFgUWLqZ5HHBECCzWAK0pmiK9lDALRGQ1JsveX7njd0ThclcVBKGM-h-EMKT8ULb3CLnfD1Pv_I1jPVempISvzhJwY-HvWLM8zi1NjcAPIsvdk" data-price="€2.90" data-tag="Vibrant • Tart" data-title="Blood Orange">
+<div class="flex justify-between items-start mb-4">
+<span class="font-headline-sm text-xs font-bold text-deep-forest/40 uppercase tracking-wider">02</span>
+<span class="px-3 py-1 rounded-full bg-energetic-orange/20 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider">Vibrant • Tart</span>
+</div>
+<div class="relative w-full h-64 rounded-xl overflow-hidden mb-6 bg-surface-container-high flex items-center justify-center p-3">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%F0%9F%A5%A4%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Citrus%20%2B%20Mint%3C/text%3E%3C/svg%3E'" alt="SOLARO Blood Orange Can" class="w-full h-full object-contain transform transition-transform duration-700 group-hover:scale-110 drop-shadow-md" src="https://lh3.googleusercontent.com/aida/AEtjO1WKqF9oTkn81bfnC_cnF3ztnjiCbN-TNlmlx_2FMhcr8kRy2YBqjj6dMq0kkwUzgc0mzkHu3Kik-K6JkHDEAmQRp5GXsgd02XFIWcAZoI-G5vr7ALrzN_7b1AfrIe9FhqUDiYeS7csD3oFgUWLqZ5HHBECCzWAK0pmiK9lDALRGQ1JsveX7njd0ThclcVBKGM-h-EMKT8ULb3CLnfD1Pv_I1jPVempISvzhJwY-HvWLM8zi1NjcAPIsvdk"/>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-xl text-deep-forest font-bold mb-1 group-text transition-colors group-hover:text-energetic-orange">Blood Orange</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-4 flex-grow">
+  Sun-drenched Calabrian blood oranges with subtle tart pomegranate nuance and persistent micro-bubbles.
+</p>
+<div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-headline-sm text-lg text-deep-forest font-bold">€2.90</span>
+<button aria-label="Add Blood Orange to cart" class="w-10 h-10 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 transform active:scale-95 shadow-sm add-cart-btn cursor-pointer" data-name="Blood Orange" data-price="2.90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Flavor 03: Mango + Ginger -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-outline-variant/30 reveal-on-scroll flavor-card cursor-pointer" data-desc="Golden tropical Alfonso mango paired seamlessly with cold-pressed ginger root for a gentle, warm finish." data-img="https://lh3.googleusercontent.com/aida/AEtjO1XLJXDwzVmC-MK0BVDMxHisA_w9Uq1zqIzI6gvSCH59kUZ14yaXYER67sgAMq-bZxIpDyG6D-pk1UnOu5EwhtaM3ybFuezxKBuasee_icAoFbDxcfBahZOPk8uudAAdMLFPYrt8UdIS3sLIYvRf4eqLCMZXPabP0ltV1IoFoQOkZ-FirU3Yuh0jI1s3AtY15o7H01-0JYDyIGCZvzjGOjT5ZGzGO3EECIZDgXiCK4-M9ZSh78dfvP4I9w" data-price="€2.90" data-tag="Warm • Tonic" data-title="Mango + Ginger">
+<div class="flex justify-between items-start mb-4">
+<span class="font-headline-sm text-xs font-bold text-deep-forest/40 uppercase tracking-wider">03</span>
+<span class="px-3 py-1 rounded-full bg-solar-yellow/40 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider">Warm • Tonic</span>
+</div>
+<div class="relative w-full h-64 rounded-xl overflow-hidden mb-6 bg-surface-container-high flex items-center justify-center p-3">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%F0%9F%A5%A4%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Citrus%20%2B%20Mint%3C/text%3E%3C/svg%3E'" alt="SOLARO Mango + Ginger Can" class="w-full h-full object-contain transform transition-transform duration-700 group-hover:scale-110 drop-shadow-md" src="https://lh3.googleusercontent.com/aida/AEtjO1XLJXDwzVmC-MK0BVDMxHisA_w9Uq1zqIzI6gvSCH59kUZ14yaXYER67sgAMq-bZxIpDyG6D-pk1UnOu5EwhtaM3ybFuezxKBuasee_icAoFbDxcfBahZOPk8uudAAdMLFPYrt8UdIS3sLIYvRf4eqLCMZXPabP0ltV1IoFoQOkZ-FirU3Yuh0jI1s3AtY15o7H01-0JYDyIGCZvzjGOjT5ZGzGO3EECIZDgXiCK4-M9ZSh78dfvP4I9w"/>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-xl text-deep-forest font-bold mb-1 group-text transition-colors group-hover:text-primary">Mango + Ginger</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-4 flex-grow">
+  Golden tropical Alfonso mango paired seamlessly with cold-pressed ginger root for a gentle, warm finish.
+</p>
+<div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-headline-sm text-lg text-deep-forest font-bold">€2.90</span>
+<button aria-label="Add Mango Ginger to cart" class="w-10 h-10 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 transform active:scale-95 shadow-sm add-cart-btn cursor-pointer" data-name="Mango + Ginger" data-price="2.90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Flavor 04: Apple + Basil -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-outline-variant/30 reveal-on-scroll flavor-card cursor-pointer" data-desc="Crisp European orchard green apple infused with aromatic sweet genovese basil for an unexpected crisp palate." data-img="https://lh3.googleusercontent.com/aida/AEtjO1V3gxDEirE-1ksYc4QPbET70oDcof9w2rB8eh5pwY5E9LgwPgoUWTgbhKZbHHxk9OXBwvRWXe_68FvsEaSMutljOOaFyFdt4Gb-ut57_Yoyh_I-9RPIyZEryLBI7RUEvvs59oVejsC2TTa5Ovw1dN6Bpp1bjR1sGVqL65VhsdbzRQS8wluBezidJ6misNk8J0Qe8IV7jsgPonMpRZaGTqCBv05tskqv2h1hS2VKuAyS7p2gHC3rZzRpKyg" data-price="€2.90" data-tag="Crisp • Floral" data-title="Apple + Basil">
+<div class="flex justify-between items-start mb-4">
+<span class="font-headline-sm text-xs font-bold text-deep-forest/40 uppercase tracking-wider">04</span>
+<span class="px-3 py-1 rounded-full bg-fresh-leaf/25 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider">Crisp • Floral</span>
+</div>
+<div class="relative w-full h-64 rounded-xl overflow-hidden mb-6 bg-surface-container-high flex items-center justify-center p-3">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%F0%9F%A5%A4%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Citrus%20%2B%20Mint%3C/text%3E%3C/svg%3E'" alt="SOLARO Apple + Basil Can" class="w-full h-full object-contain transform transition-transform duration-700 group-hover:scale-110 drop-shadow-md" src="https://lh3.googleusercontent.com/aida/AEtjO1V3gxDEirE-1ksYc4QPbET70oDcof9w2rB8eh5pwY5E9LgwPgoUWTgbhKZbHHxk9OXBwvRWXe_68FvsEaSMutljOOaFyFdt4Gb-ut57_Yoyh_I-9RPIyZEryLBI7RUEvvs59oVejsC2TTa5Ovw1dN6Bpp1bjR1sGVqL65VhsdbzRQS8wluBezidJ6misNk8J0Qe8IV7jsgPonMpRZaGTqCBv05tskqv2h1hS2VKuAyS7p2gHC3rZzRpKyg"/>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-xl text-deep-forest font-bold mb-1 group-text transition-colors group-hover:text-tertiary">Apple + Basil</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-4 flex-grow">
+  Crisp European orchard green apple infused with aromatic sweet genovese basil for an unexpected crisp palate.
+</p>
+<div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-headline-sm text-lg text-deep-forest font-bold">€2.90</span>
+<button aria-label="Add Apple Basil to cart" class="w-10 h-10 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 transform active:scale-95 shadow-sm add-cart-btn cursor-pointer" data-name="Apple + Basil" data-price="2.90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- INGREDIENTS PHILOSOPHY ("Nothing unnecessary.") -->
+<section class="w-full py-20 md:py-32 bg-surface-container relative" id="ingredients">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start mb-space-xl reveal-on-scroll">
+<div class="lg:col-span-6">
+<span class="font-headline-sm text-xs text-tertiary uppercase tracking-wider block mb-2 font-bold">02 / Integrity</span>
+<h2 class="font-headline-xl text-3xl md:text-5xl text-deep-forest font-extrabold tracking-tight">
+  Nothing unnecessary.
+</h2>
+</div>
+<div class="lg:col-span-6">
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant leading-relaxed">
+  Most energy beverages conceal chemical cocktails behind synthetic sweeteners. SOLARO is different: simple, recognizable organic botanicals and sun-ripened fruits sourced responsibly from certified organic European family groves.
+</p>
+</div>
+</div>
+<!-- 5 Ingredients Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md mb-space-xl sol-stagger">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-solar-yellow/20 flex items-center justify-center text-primary mb-4 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined">nutrition</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-lg text-deep-forest font-bold mb-1">Sicilian Lemons</h4>
+<p class="font-body-sm text-sm text-on-surface-variant">Cold-pressed organic zest bursting with bright natural bioflavonoids.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-fresh-leaf/20 flex items-center justify-center text-tertiary mb-4 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-lg text-deep-forest font-bold mb-1">Garden Spearmint</h4>
+<p class="font-body-sm text-sm text-on-surface-variant">Freshly harvested field mint providing smooth cooling alertness.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-energetic-orange/20 flex items-center justify-center text-energetic-orange mb-4 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined">nature</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-lg text-deep-forest font-bold mb-1">Calabrian Orange</h4>
+<p class="font-body-sm text-sm text-on-surface-variant">Sun-kissed Moro varietals delivering natural vitamin C and clean vibrancy.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-700 mb-4 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined">filter_vintage</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-lg text-deep-forest font-bold mb-1">Wild Ginger Root</h4>
+<p class="font-body-sm text-sm text-on-surface-variant">Small-batch pressed rhizomes for digestive ease and crisp warmth.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-secondary-container/50 flex items-center justify-center text-secondary mb-4 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-lg text-deep-forest font-bold mb-1">Alpine Spring Water</h4>
+<p class="font-body-sm text-sm text-on-surface-variant">Naturally filtered through dolomitic stone with delicate effervescence.</p>
+</div>
+</div>
+</div>
+<!-- Product Benefits Strip -->
+<div class="flex flex-wrap items-center justify-center gap-space-sm pt-4 reveal-on-scroll">
+<span class="px-5 py-2 rounded-full bg-surface text-deep-forest font-headline-sm text-xs tracking-wider uppercase font-semibold shadow-sm hover:scale-105 transition-all duration-300 cursor-default">
+  • Organic Natural Flavors
+</span>
+<span class="px-5 py-2 rounded-full bg-surface text-deep-forest font-headline-sm text-xs tracking-wider uppercase font-semibold shadow-sm hover:scale-105 transition-all duration-300 cursor-default">
+  • Real Botanicals
+</span>
+<span class="px-5 py-2 rounded-full bg-surface text-deep-forest font-headline-sm text-xs tracking-wider uppercase font-semibold shadow-sm hover:scale-105 transition-all duration-300 cursor-default">
+  • Lightly Carbonated
+</span>
+<span class="px-5 py-2 rounded-full bg-surface text-deep-forest font-headline-sm text-xs tracking-wider uppercase font-semibold shadow-sm hover:scale-105 transition-all duration-300 cursor-default">
+  • Low Natural Sugar
+</span>
+<span class="px-5 py-2 rounded-full bg-surface text-deep-forest font-headline-sm text-xs tracking-wider uppercase font-semibold shadow-sm hover:scale-105 transition-all duration-300 cursor-default">
+  • 100% Vegan
+</span>
+<span class="px-5 py-2 rounded-full bg-surface text-deep-forest font-headline-sm text-xs tracking-wider uppercase font-semibold shadow-sm hover:scale-105 transition-all duration-300 cursor-default">
+  • No Artificial Colors
+</span>
+</div>
+</div>
+</section>
+<!-- SUSTAINABILITY & EARTH COMMITMENT SECTION -->
+<section class="w-full py-20 md:py-32 bg-surface relative" id="sustainability">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center mb-space-xl">
+<div class="lg:col-span-6 sol-left">
+<span class="font-headline-sm text-xs text-fresh-leaf uppercase tracking-wider block mb-2 font-bold">03 / Earth Commitment</span>
+<h2 class="font-headline-xl text-3xl md:text-5xl text-deep-forest font-extrabold tracking-tight mb-space-md">
+  Rooted in responsibility.
+</h2>
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant mb-space-lg leading-relaxed">
+  We believe true refreshment shouldn't cost the earth. From infusing our drinks with European-grown botanicals to utilizing fully circular packaging, every SOLARO can is a pledge to environmental stewardship.
+</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/30 transition-transform duration-300 hover:scale-105">
+<p class="font-headline-md text-3xl text-deep-forest font-bold">100%</p>
+<p class="font-body-sm text-xs text-on-surface-variant uppercase tracking-wider font-semibold mt-1">Recyclable Aluminum</p>
+</div>
+<div class="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/30 transition-transform duration-300 hover:scale-105">
+<p class="font-headline-md text-3xl text-deep-forest font-bold">0%</p>
+<p class="font-body-sm text-xs text-on-surface-variant uppercase tracking-wider font-semibold mt-1">Net Carbon Production</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-6 sol-right">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-6 rounded-2xl bg-deep-forest text-warm-cream flex flex-col justify-between shadow-xl transition-all duration-300 hover:scale-[1.02]">
+<div class="w-12 h-12 rounded-full bg-warm-cream/10 flex items-center justify-center text-solar-yellow mb-6 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined text-[24px]">eco</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-lg font-bold mb-2">Organic European Sourcing</h3>
+<p class="font-body-sm text-sm text-warm-cream/80">Partnering exclusively with certified organic family farms across Italy, Spain, and Germany.</p>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col justify-between shadow-sm transition-all duration-300 hover:scale-[1.02]">
+<div class="w-12 h-12 rounded-full bg-fresh-leaf/20 flex items-center justify-center text-fresh-leaf mb-6 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined text-[24px]">cycle</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-lg text-deep-forest font-bold mb-2">Infinite Aluminum Loop</h3>
+<p class="font-body-sm text-sm text-on-surface-variant">Our sleek cans can be recycled endlessly back into high-grade metal without losing purity.</p>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col justify-between shadow-sm transition-all duration-300 hover:scale-[1.02]">
+<div class="w-12 h-12 rounded-full bg-solar-yellow/20 flex items-center justify-center text-primary mb-6 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined text-[24px]">solar_power</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-lg text-deep-forest font-bold mb-2">Solar Powered Breweries</h3>
+<p class="font-body-sm text-sm text-on-surface-variant">Production facilities running entirely on renewable solar and wind energy grids.</p>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col justify-between shadow-sm transition-all duration-300 hover:scale-[1.02]">
+<div class="w-12 h-12 rounded-full bg-energetic-orange/20 flex items-center justify-center text-energetic-orange mb-6 transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined text-[24px]">forest</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-lg text-deep-forest font-bold mb-2">Reforestation Pledge</h3>
+<p class="font-body-sm text-sm text-on-surface-variant">A portion of every single crate sold directly funds European forest conservation and soil health.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SOLARO MIXOLOGY / BOTANICAL RITUAL SECTION -->
+<section class="w-full py-20 md:py-32 bg-surface-container relative" id="mixology">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-space-xl reveal-on-scroll">
+<span class="font-headline-sm text-xs text-primary uppercase tracking-wider block mb-2 font-bold">04 / Botanical Rituals</span>
+<h2 class="font-headline-xl text-3xl md:text-5xl text-deep-forest font-extrabold tracking-tight mb-space-sm">
+  Elevated home mixology.
+</h2>
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant leading-relaxed">
+  Transform your SOLARO can into a craft mocktail masterpiece with simple fresh garnishes, aromatic herbs, and large artisanal ice cubes.
+</p>
+</div>
+<!-- Recipe Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter sol-stagger">
+<!-- Recipe 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="px-3 py-1 rounded-full bg-solar-yellow/30 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider">Citrus + Mint</span>
+<span class="font-headline-sm text-xs text-on-surface-variant">3 Min Prep</span>
+</div>
+<h3 class="font-headline-sm text-xl text-deep-forest font-bold mb-2">The Golden Hour Spritz</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-6">
+  Pour chilled Citrus + Mint over clear ice in a wine glass. Garnish with a fresh sprig of smacked rosemary and a dehydrated lemon wheel.
+</p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex items-center justify-between text-xs font-bold text-deep-forest uppercase tracking-wider">
+<span class="">Pairing: Sunset Aperitivo</span>
+<span class="material-symbols-outlined text-[18px]">local_bar</span>
+</div>
+</div>
+<!-- Recipe 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="px-3 py-1 rounded-full bg-energetic-orange/20 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider">Blood Orange</span>
+<span class="font-headline-sm text-xs text-on-surface-variant">2 Min Prep</span>
+</div>
+<h3 class="font-headline-sm text-xl text-deep-forest font-bold mb-2">Calabrian Twilight Cooler</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-6">
+  Serve Blood Orange over crushed ice with 3 fresh basil leaves and a squeeze of pink grapefruit juice for extra botanical depth.
+</p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex items-center justify-between text-xs font-bold text-deep-forest uppercase tracking-wider">
+<span class="">Pairing: Garden Dinners</span>
+<span class="material-symbols-outlined text-[18px]">local_bar</span>
+</div>
+</div>
+<!-- Recipe 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="px-3 py-1 rounded-full bg-fresh-leaf/25 text-deep-forest font-headline-sm text-[10px] uppercase font-bold tracking-wider">Mango + Ginger</span>
+<span class="font-headline-sm text-xs text-on-surface-variant">4 Min Prep</span>
+</div>
+<h3 class="font-headline-sm text-xl text-deep-forest font-bold mb-2">Tropical Spice Mule</h3>
+<p class="font-body-sm text-sm text-on-surface-variant mb-6">
+  Combine Mango + Ginger in a copper mug with lime wedges, muddled mint, and a dash of Angostura bitters for warmth.
+</p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex items-center justify-between text-xs font-bold text-deep-forest uppercase tracking-wider">
+<span class="">Pairing: Evening Relaxation</span>
+<span class="material-symbols-outlined text-[18px]">local_bar</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DUO CAN + BOTTLE SHOWCASE ("Engineered for every occasion.") -->
+<section class="w-full py-20 md:py-32 bg-surface relative" id="showcase">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
+<!-- Left Product Photo with restored can + glass bottle picture -->
+<div class="lg:col-span-6 relative order-2 lg:order-1 sol-scale">
+<div class="relative w-full aspect-[4/3] md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-surface-container-high group">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%F0%9F%A5%A4%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Citrus%20%2B%20Mint%3C/text%3E%3C/svg%3E'" alt="SOLARO Can and Glass Bottle Organic Beverage Pairing Showcase" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1V4Qz9yM93u7eIyFnnMybVMmmx2dF8MEVq1qj6wsnKiukRlX6fKujZPySiei1tAScpz_7wAzK7_wFuv3WQ2gH9MODwzXr5-oNbAMRNYXHKqOxyp4BVHWOeGGFeEFjqZqf2tn4LB_9UHMVDRWBib2KAHASIpyCoqh_GpIaMaAI9a8ZDj0px09tOhOn46fxK3oTGtj75Jze6vYi9A7S49zpPflobMiG-f-4P-GLjotTtBTLvmtUEER1oK_KI"/>
+</div>
+<!-- Floating Format Pill -->
+<div class="absolute bottom-6 right-6 bg-surface-container-lowest/95 backdrop-blur-md px-5 py-3 rounded-2xl shadow-lg border border-outline-variant/30 animate-float">
+<p class="font-headline-sm text-[10px] text-on-surface-variant uppercase tracking-wider font-bold">Format Innovation</p>
+<p class="font-headline-sm text-sm font-bold text-deep-forest">Can (330ml) • Bottle (500ml)</p>
+</div>
+</div>
+<!-- Right Editorial Info -->
+<div class="lg:col-span-6 order-1 lg:order-2 flex flex-col justify-center reveal-on-scroll">
+<span class="font-headline-sm text-xs text-primary uppercase tracking-wider block mb-2 font-bold">05 / Two Formats</span>
+<h2 class="font-headline-xl text-3xl md:text-5xl text-deep-forest font-extrabold tracking-tight mb-space-md">
+  Engineered for every occasion.
+</h2>
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant mb-space-lg leading-relaxed">
+  Whether running between morning meetings, embarking on a mountain ride, or setting an aperitivo table with friends, SOLARO is thoughtfully housed in conscious packaging.
+</p>
+<!-- Duo Format Breakdown -->
+<div class="space-y-space-md mb-space-lg">
+<div class="p-6 rounded-2xl bg-surface-container-low flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between border border-outline-variant/30 hover:shadow-md transition-all duration-300">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-fresh-leaf"></span>
+<h4 class="font-headline-sm text-lg text-deep-forest font-bold">SOLARO Sleek Can (330 ml)</h4>
+</div>
+<p class="font-body-sm text-sm text-on-surface-variant">
+  Infinitely recyclable lightweight aluminum. Rapid chill response, ultra portable for daily movement.
+</p>
+</div>
+<span class="font-headline-sm text-xs text-deep-forest font-bold uppercase tracking-wider whitespace-nowrap bg-surface-container px-3 py-1.5 rounded-full">On The Go</span>
+</div>
+<div class="p-6 rounded-2xl bg-surface-container-low flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between border border-outline-variant/30 hover:shadow-md transition-all duration-300">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-solar-yellow"></span>
+<h4 class="font-headline-sm text-lg text-deep-forest font-bold">SOLARO Embossed Bottle (500 ml)</h4>
+</div>
+<p class="font-body-sm text-sm text-on-surface-variant">
+  Flint glass with custom sun-burst tactile embossing. Designed for dinner settings and shared tables.
+</p>
+</div>
+<span class="font-headline-sm text-xs text-deep-forest font-bold uppercase tracking-wider whitespace-nowrap bg-surface-container px-3 py-1.5 rounded-full">Table Dining</span>
+</div>
+</div>
+<!-- Specs Grid -->
+<div class="grid grid-cols-3 gap-4 pt-2">
+<div class="transition-transform duration-300 hover:scale-105">
+<p class="font-headline-sm text-xs text-on-surface-variant uppercase font-semibold tracking-wider">Serving Temp</p>
+<p class="font-headline-sm text-base text-deep-forest font-bold mt-1">6°C - 8°C</p>
+</div>
+<div class="transition-transform duration-300 hover:scale-105">
+<p class="font-headline-sm text-xs text-on-surface-variant uppercase font-semibold tracking-wider">Effervescence</p>
+<p class="font-headline-sm text-base text-deep-forest font-bold mt-1">Fine 3.2 Bar</p>
+</div>
+<div class="transition-transform duration-300 hover:scale-105">
+<p class="font-headline-sm text-xs text-on-surface-variant uppercase font-semibold tracking-wider">Material Life</p>
+<p class="font-headline-sm text-base text-deep-forest font-bold mt-1">100% Recyclable</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BRAND STORY & LIFESTYLE ("Made for days that move.") -->
+<section class="w-full py-20 md:py-32 bg-deep-forest text-warm-cream relative overflow-hidden" id="story">
+<div class="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-fresh-leaf/10 blur-3xl"></div>
+<div class="pointer-events-none absolute top-12 -left-20 w-80 h-80 rounded-full bg-solar-yellow/10 blur-3xl"></div>
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop relative z-10">
+<div class="max-w-3xl mb-space-xl reveal-on-scroll">
+<span class="font-headline-sm text-xs text-solar-yellow uppercase tracking-wider block mb-4 font-bold">06 / Our Ethos</span>
+<h2 class="font-headline-xl text-3xl md:text-5xl font-extrabold tracking-tight mb-space-md text-warm-cream">
+  Made for days that move.
+</h2>
+<p class="font-body-lg text-lg md:text-xl text-warm-cream/90 font-light leading-relaxed">
+  SOLARO was created around a simple idea: great drinks should feel as good as they taste. We combine organic ingredients, vibrant flavors, and thoughtful packaging to create something refreshing, modern, and easy to enjoy.
+</p>
+</div>
+<!-- 4 Lifestyle Pillars -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-xl sol-stagger">
+<div class="bg-warm-cream/5 backdrop-blur-sm p-6 rounded-2xl flex flex-col justify-between hover:bg-warm-cream/10 transition-all duration-300 transform hover:-translate-y-2 border border-warm-cream/10">
+<span class="material-symbols-outlined text-solar-yellow text-[32px] mb-6 transition-transform duration-300 hover:rotate-12">wb_twilight</span>
+<div>
+<h4 class="font-headline-sm text-lg font-bold text-warm-cream mb-2">Outdoor Mornings</h4>
+<p class="font-body-sm text-sm text-warm-cream/70">A clean botanical jumpstart under the open morning sky without caffeine jitter.</p>
+</div>
+</div>
+<div class="bg-warm-cream/5 backdrop-blur-sm p-6 rounded-2xl flex flex-col justify-between hover:bg-warm-cream/10 transition-all duration-300 transform hover:-translate-y-2 border border-warm-cream/10">
+<span class="material-symbols-outlined text-solar-yellow text-[32px] mb-6 transition-transform duration-300 hover:rotate-12">directions_bike</span>
+<div>
+<h4 class="font-headline-sm text-lg font-bold text-warm-cream mb-2">City Cycling</h4>
+<p class="font-body-sm text-sm text-warm-cream/70">Slotted into your bottle cage for brisk hydration through sun-lit European boulevards.</p>
+</div>
+</div>
+<div class="bg-warm-cream/5 backdrop-blur-sm p-6 rounded-2xl flex flex-col justify-between hover:bg-warm-cream/10 transition-all duration-300 transform hover:-translate-y-2 border border-warm-cream/10">
+<span class="material-symbols-outlined text-solar-yellow text-[32px] mb-6 transition-transform duration-300 hover:rotate-12">palette</span>
+<div>
+<h4 class="font-headline-sm text-lg font-bold text-warm-cream mb-2">Studio Sessions</h4>
+<p class="font-body-sm text-sm text-warm-cream/70">Pure sensory crispness designed to sustain prolonged creative flow and focus.</p>
+</div>
+</div>
+<div class="bg-warm-cream/5 backdrop-blur-sm p-6 rounded-2xl flex flex-col justify-between hover:bg-warm-cream/10 transition-all duration-300 transform hover:-translate-y-2 border border-warm-cream/10">
+<span class="material-symbols-outlined text-solar-yellow text-[32px] mb-6 transition-transform duration-300 hover:rotate-12">sailing</span>
+<div>
+<h4 class="font-headline-sm text-lg font-bold text-warm-cream mb-2">Coastal Sunsets</h4>
+<p class="font-body-sm text-sm text-warm-cream/70">Poured over wild ice with fresh rosemary as twilight warms the shoreline.</p>
+</div>
+</div>
+</div>
+<!-- Press Quote Bar -->
+<div class="p-8 rounded-2xl bg-warm-cream/10 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-6 border border-warm-cream/10 reveal-on-scroll">
+<div class="flex items-center gap-4">
+<span class="text-4xl text-solar-yellow font-serif leading-none">“</span>
+<p class="font-headline-sm text-lg md:text-xl text-warm-cream italic font-light">
+  Bright, refreshing and surprisingly sophisticated.
+</p>
+</div>
+<span class="font-headline-sm text-xs text-warm-cream/60 uppercase tracking-wider whitespace-nowrap font-medium">
+  — The Continental Beverage Journal
+</span>
+</div>
+</div>
+</section>
+<!-- STORE LOCATOR SECTION ("Bring SOLARO home.") -->
+<section class="w-full py-20 md:py-32 bg-surface relative" id="find-us">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
+<!-- Left: Search & Store List -->
+<div class="lg:col-span-6 reveal-on-scroll">
+<span class="font-headline-sm text-xs text-primary uppercase tracking-wider block mb-2 font-bold">07 / Stockists</span>
+<h2 class="font-headline-xl text-3xl md:text-5xl text-deep-forest font-extrabold tracking-tight mb-space-md">
+  Bring SOLARO home.
+</h2>
+<p class="font-body-lg text-base md:text-lg text-on-surface-variant mb-space-lg leading-relaxed">
+  Available at selected organic grocers, specialty concept stores, boutique cafés, and independent markets across Europe.
+</p>
+<!-- Search Bar -->
+<div class="p-2 bg-surface-container-low rounded-full shadow-sm flex flex-col sm:flex-row gap-2 max-w-lg mb-space-lg border border-outline-variant/30">
+<div class="flex items-center gap-2 px-4 py-2 flex-grow">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<input class="bg-transparent border-0 outline-none w-full font-body-sm text-sm text-deep-forest placeholder:text-outline" id="store-input" placeholder="Enter city or postal code (e.g. Paris, Berlin)" type="text"/>
+</div>
+<button class="bg-deep-forest text-warm-cream px-6 py-3 rounded-full font-headline-sm text-xs font-bold uppercase tracking-wider hover:bg-solar-yellow hover:text-deep-forest transition-all duration-300 shadow-sm whitespace-nowrap cursor-pointer transform hover:scale-105" id="store-search-btn" type="button">
+  Find a store near you
+</button>
+</div>
+<!-- Featured Stockist Cities -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/25 hover:scale-105 transition-transform duration-300 city-card cursor-pointer" data-address="Torstraße 142, 10119 Berlin • Open Today" data-city="Berlin" data-count="18 Locations">
+<p class="font-headline-sm text-sm font-bold text-deep-forest">Berlin</p>
+<p class="font-headline-sm text-[11px] text-on-surface-variant mt-1 font-semibold tracking-wider">18 Locations</p>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/25 hover:scale-105 transition-transform duration-300 city-card cursor-pointer" data-address="Rue de Rivoli 45, 75001 Paris • Open Today" data-city="Paris" data-count="24 Locations">
+<p class="font-headline-sm text-sm font-bold text-deep-forest">Paris</p>
+<p class="font-headline-sm text-[11px] text-on-surface-variant mt-1 font-semibold tracking-wider">24 Locations</p>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/25 hover:scale-105 transition-transform duration-300 city-card cursor-pointer" data-address="Gothersgade 12, 1123 København • Open Today" data-city="Copenhagen" data-count="12 Locations">
+<p class="font-headline-sm text-sm font-bold text-deep-forest">Copenhagen</p>
+<p class="font-headline-sm text-[11px] text-on-surface-variant mt-1 font-semibold tracking-wider">12 Locations</p>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/25 hover:scale-105 transition-transform duration-300 city-card cursor-pointer" data-address="Prinsengracht 263, 1016 GV Amsterdam • Open Today" data-city="Amsterdam" data-count="15 Locations">
+<p class="font-headline-sm text-sm font-bold text-deep-forest">Amsterdam</p>
+<p class="font-headline-sm text-[11px] text-on-surface-variant mt-1 font-semibold tracking-wider">15 Locations</p>
+</div>
+</div>
+</div>
+<!-- Right: Visual Store Image Container Restored with Flagship Photo -->
+<div class="lg:col-span-6 reveal-on-scroll">
+<div class="relative w-full h-[380px] rounded-3xl overflow-hidden shadow-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center group">
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%20viewBox%3D%270%200%20400%20300%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23e8f0e0%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23c4d8b8%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27400%27%20height%3D%27300%27%20fill%3D%27url%28%23g%29%27/%3E%3Ctext%20x%3D%27200%27%20y%3D%27155%27%20font-size%3D%2714%27%20text-anchor%3D%27middle%27%20fill%3D%27rgba%2824%2C56%2C42%2C.5%29%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%20Flagship%20Berlin%3C/text%3E%3C/svg%3E'" alt="SOLARO Flagship Store &amp; Kiosk Berlin" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1X5xsO_0XjjrAjVZsPEEt3p49DWJPbcjkXIvdL-jAD0nkPnnaJlZuw88FTk1JhfOJ4QQ2D3J_wJ565n1VeljAIihTXgwiOQlb0de4rYyWrEgATxr06mxbxFDMiVNAZOFNqloAAUc2FYG_suo6YnRsnFu2_6pwfYk92RqUMSstdhs-H8Kf-rYcEJXJ0bMRvUVRwBNzMdQTJWHHR7TNOHJBh0s1Eaz4LjqY2w5UJwOk3sdI2zoqSSMKB5YSI"/>
+<!-- Overlay Flagship Card -->
+<div class="absolute bottom-6 left-6 right-6 bg-surface-container-lowest/95 backdrop-blur-md p-4 rounded-2xl shadow-md flex items-center justify-between border border-outline-variant/20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-solar-yellow flex items-center justify-center text-deep-forest font-bold transition-transform duration-300 hover:rotate-12">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+</div>
+<div>
+<p class="font-headline-sm text-sm font-bold text-deep-forest" id="store-title">SOLARO Flagship Kiosk</p>
+<p class="font-body-sm text-xs text-on-surface-variant" id="store-address">Torstraße 142, 10119 Berlin • Open Today</p>
+</div>
+</div>
+<a class="font-headline-sm text-xs font-bold text-primary hover:underline uppercase tracking-wider transition-colors" href="#find-us">Directions</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FINAL BOLD CTA BANNER ("MAKE TODAY BRIGHTER.") -->
+<section class="w-full py-20 md:py-28 bg-solar-yellow text-deep-forest relative overflow-hidden">
+<!-- Decorative sun element -->
+<div class="pointer-events-none absolute right-0 top-0 bottom-0 w-1/2 opacity-15 flex items-center justify-center">
+<svg class="w-full h-full max-w-[600px] animate-spin" fill="none" style="animation-duration: 40s;" viewbox="0 0 400 400">
+<circle cx="200" cy="200" r="160" stroke="#18382A" stroke-dasharray="8 8" stroke-width="2"></circle>
+<circle cx="200" cy="200" r="120" stroke="#18382A" stroke-width="2"></circle>
+<circle cx="200" cy="200" fill="#18382A" fill-opacity="0.1" r="70"></circle>
+</svg>
+</div>
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop relative z-10 text-center flex flex-col items-center reveal-on-scroll">
+<!-- Restored Logo Emblem -->
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%E2%98%80%EF%B8%8F%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%3C/text%3E%3C/svg%3E'" alt="SOLARO Organic Beverage Icon Emblem" class="w-20 h-20 rounded-full mb-space-md shadow-md bg-warm-cream p-2 object-contain transition-transform duration-500 hover:rotate-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW6H_1VP14-E8OdhtexBUZBDKBzYcihEFTvBaKRxgVtBNy2HjElW6OdH_w3v-4pw3li70ifrsGQW6dzvKDQUNicC2zHri-Iq391M9j1XYn70_YPnUu674uCLwnUDkLvrdUa9Wa3kLEPZF28shCzHIuZ6AAwLxqexsB0BtGaFJJpbm0QkthlvbKkIlrFOLHfcS1kM6bMAeLCaXnf4KNGt3cPRfv4vWPA5TYgBjLU8nl8zpMKWR3KC27"/>
+<span class="font-headline-sm text-xs text-deep-forest/80 uppercase tracking-wider block mb-2 font-bold">
+  Sunlight in a can
+</span>
+<h2 class="font-display-hero text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-deep-forest mb-space-sm max-w-3xl">
+  Make today brighter.
+</h2>
+<p class="font-body-lg text-base md:text-lg text-deep-forest/80 max-w-xl mb-space-lg font-medium leading-relaxed">
+  Discover your new favorite organic refreshment. Shipped in 100% recyclable, climate-neutral crates straight to your doorstep.
+</p>
+<!-- CTA Button -->
+<div class="flex flex-col sm:flex-row items-center gap-space-md">
+<a class="inline-flex items-center justify-center bg-deep-forest text-warm-cream font-headline-sm text-xs md:text-sm font-bold uppercase tracking-wider px-10 py-5 rounded-full shadow-2xl hover:bg-warm-cream hover:text-deep-forest transition-all duration-300 transform hover:-translate-y-1 cursor-pointer shop-trigger group sol-rip sol-mag" href="#flavors">
+  Explore the collection
+  <span class="material-symbols-outlined ml-2 text-[20px] transition-transform duration-300 group-hover:scale-110">local_mall</span>
+</a>
+</div>
+<div class="flex items-center gap-6 mt-space-lg text-deep-forest/80 font-headline-sm text-xs uppercase tracking-wider font-semibold">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">local_shipping</span> Fast EU Dispatch</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">verified</span> 100% Satisfaction Guarantee</span>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="w-full bg-surface-container py-space-xl border-t border-surface-container-high">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl mb-space-xl">
+<div class="lg:col-span-6 flex flex-col justify-between space-y-space-md">
+<div>
+<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27200%27%20height%3D%27260%27%20viewBox%3D%270%200%20200%20260%27%3E%3Crect%20width%3D%27200%27%20height%3D%27260%27%20rx%3D%2720%27%20fill%3D%27%23F4D83D%27%20opacity%3D%27.18%27/%3E%3Ctext%20x%3D%27100%27%20y%3D%27145%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3E%E2%98%80%EF%B8%8F%3C/text%3E%3Ctext%20x%3D%27100%27%20y%3D%27210%27%20font-size%3D%2711%27%20text-anchor%3D%27middle%27%20fill%3D%27%2318382a%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27700%27%3ESOLARO%3C/text%3E%3C/svg%3E'" alt="SOLARO" class="h-14 w-auto object-contain mb-2 transition-transform duration-300 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOogl0nEq4B3E-mtl4ILk2sM9igfkYlgvHhcGo7SfTTxBepHpJkTCplrvReZCj6N7Sj2LfYiFjv0htHSKf1XH_EBuxuy2elH-Ksy0QW-GIu-Hq2J70V6qRIT7avZEKFf3__szjv0fRSb6gxurxbFsIgdXlClbVE44kOMEuVzqDZ8Jn840_5AN3fuHTbyZ4KoBXr8APZWTlS2kh9WqKGJfA5hMmdk28LoItV2mieoicZYHpej7i0WGY"/>
+<p class="font-headline-md text-base text-deep-forest/80 mt-1">Organic energy. Naturally.</p>
+</div>
+<div class="max-w-md pt-space-md">
+<p class="font-label-caps text-xs text-on-surface-variant uppercase tracking-wider mb-2 font-bold">Botanical Dispatch &amp; Seasonal Harvests</p>
+<form class="flex flex-col sm:flex-row gap-2" id="newsletter-form">
+<input class="flex-1 bg-surface-container-lowest px-5 py-3 rounded-full text-on-surface placeholder:text-outline font-body-sm text-sm focus:outline-none focus:ring-2 focus:ring-deep-forest border border-outline-variant/30 transition-all" id="newsletter-input" placeholder="Enter your email" required="" type="email"/>
+<button class="bg-solar-yellow text-deep-forest font-headline-sm text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-deep-forest hover:text-warm-cream transition-colors duration-300 cursor-pointer whitespace-nowrap shadow-sm" id="newsletter-btn" type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-space-lg">
+<div class="flex flex-col space-y-2">
+<p class="font-headline-sm text-xs uppercase tracking-wider text-deep-forest font-bold mb-1">Navigation</p>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#flavors">Drinks</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#sustainability">Sustainability</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#mixology">Mixology</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#story">Our Story</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#ingredients">Ingredients</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#find-us">Find Us</a>
+</div>
+<div class="flex flex-col space-y-2">
+<p class="font-headline-sm text-xs uppercase tracking-wider text-deep-forest font-bold mb-1">Community</p>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#">Contact</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#">Instagram</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#">TikTok</a>
+</div>
+<div class="flex flex-col space-y-2">
+<p class="font-headline-sm text-xs uppercase tracking-wider text-deep-forest font-bold mb-1">Legal</p>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#">Privacy</a>
+<a class="font-body-sm text-sm text-on-surface-variant hover:text-deep-forest transition-colors duration-300" href="#">Imprint</a>
+</div>
+</div>
+</div>
+<div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md border-t border-outline-variant/30">
+<p class="font-headline-sm text-xs text-on-surface-variant tracking-wider font-semibold">© 2024 SOLARO BEVERAGES GMBH. CRAFTED IN EUROPE.</p>
+<p class="font-headline-sm text-xs text-on-surface-variant tracking-wider font-semibold">CERTIFIED EU ORGANIC • SUSTAINABLE HARVEST</p>
+</div>
+</div>
+</footer>
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SOLARO — Immersive Animation System
+   Loading · Hero Reveal · Scroll Transitions · Cursor · 3D Tilt
+═══════════════════════════════════════════════════════════════ */
+(function() {
+  const REDUCE = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const TOUCH  = window.matchMedia('(hover:none)').matches;
+
+  /* ── LOADING SCREEN ── */
+  const loader = document.getElementById('sol-loader');
+  const bar    = document.getElementById('sol-bar');
+  if (loader && bar) {
+    let shown = performance.now(), MIN = 400, done = false, pct = 0;
+    const tick = setInterval(() => {
+      if (done) return;
+      pct += (90 - pct) * 0.12 + 0.4;
+      bar.style.width = Math.min(pct, 90) + '%';
+    }, 100);
+    function finish() {
+      if (done) return; done = true; clearInterval(tick);
+      bar.style.width = '100%';
+      const wait = Math.max(0, MIN - (performance.now() - shown));
+      setTimeout(() => {
+        loader.classList.add('sol-out');
+        setTimeout(() => loader.parentNode?.removeChild(loader), REDUCE ? 0 : 700);
+      }, wait + 100);
+    }
+    if (document.readyState === 'complete') finish();
+    else window.addEventListener('load', finish);
+    setTimeout(finish, 5000);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+    /* ── SCROLL PROGRESS ── */
+    const prog = document.getElementById('sol-progress');
+    function updateProg() {
+      if (!prog) return;
+      const h = document.documentElement;
+      const s = h.scrollTop || document.body.scrollTop;
+      const t = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+      prog.style.width = (t > 0 ? (s / t) * 100 : 0) + '%';
+    }
+    document.addEventListener('scroll', updateProg, { passive: true });
+    updateProg();
+
+    /* ── SMART HEADER ── */
+    let lastY = 0, hVis = true;
+    const hdr = document.querySelector('header');
+    if (hdr) {
+      document.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > lastY && y > 160 && hVis)       { hVis = false; hdr.classList.add('sol-up'); }
+        else if (y < lastY && !hVis)             { hVis = true;  hdr.classList.remove('sol-up'); }
+        lastY = y;
+      }, { passive: true });
+    }
+
+    /* ── HERO TEXT LINE REVEAL ── */
+    (function() {
+      if (REDUCE) return;
+      const lines = document.querySelectorAll('.sol-line-inner');
+      const ul = document.getElementById('hero-ul');
+      lines.forEach((l, i) => {
+        setTimeout(() => {
+          l.classList.add('sol-in');
+          if (i === lines.length - 1 && ul) {
+            setTimeout(() => { ul.style.transform = 'scaleX(1)'; }, 280);
+          }
+        }, 120 + i * 100);
+      });
+      // Fade in sub-hero elements
+      ['sol-hero-2','sol-hero-3','sol-hero-4'].forEach((cls, i) => {
+        document.querySelectorAll('.'+cls).forEach(el => {
+          el.style.transition = `opacity .85s cubic-bezier(.16,1,.3,1) ${.28 + i * .14}s, transform .85s cubic-bezier(.16,1,.3,1) ${.28 + i * .14}s`;
+          el.style.transform = 'translateY(22px)';
+          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, 50);
+        });
+      });
+    })();
+
+    /* ── HERO CAN ENTRANCE ── */
+    (function() {
+      const can = document.getElementById('hero-can-container');
+      if (!can) return;
+      if (REDUCE) { can.style.cssText = 'opacity:1;transform:none;filter:none'; return; }
+      setTimeout(() => {
+        can.classList.add('sol-can-in', 'sol-can-glow');
+        // Sparks
+        const cols = ['#F4D83D','#6FAF45','#ffffff','#F47A32'];
+        for (let i = 0; i < 14; i++) {
+          const sp = document.createElement('span');
+          sp.className = 'sol-spark';
+          const ang = (i / 14) * Math.PI * 2;
+          const d = 75 + Math.random() * 65;
+          sp.style.setProperty('--dx', Math.cos(ang) * d + 'px');
+          sp.style.setProperty('--dy', Math.sin(ang) * d - 35 + 'px');
+          sp.style.setProperty('--dur', (.55 + Math.random() * .5) + 's');
+          sp.style.setProperty('--del', (Math.random() * .25 + .55) + 's');
+          sp.style.background = cols[i % cols.length];
+          sp.style.left = '50%'; sp.style.top = '44%';
+          sp.style.marginLeft = '-2.5px'; sp.style.marginTop = '-2.5px';
+          can.appendChild(sp);
+          sp.getBoundingClientRect();
+          sp.classList.add('go');
+          setTimeout(() => sp.remove(), 2200);
+        }
+        setTimeout(() => can.classList.add('sol-can-settle'), 950);
+      }, 90);
+
+      // Scroll parallax (kicks in after entrance)
+      let canTick = false, canReady = false;
+      setTimeout(() => { canReady = true; }, 1600);
+      document.addEventListener('scroll', () => {
+        if (!canReady || canTick) return; canTick = true;
+        requestAnimationFrame(() => {
+          canTick = false;
+          const y = window.scrollY;
+          if (y > window.innerHeight * 1.3) return;
+          can.style.transition = 'none';
+          can.style.transform = `translateY(${y * -.09}px)`;
+        });
+      }, { passive: true });
+    })();
+
+    /* ── SCROLL REVEALS (generic + directional + stagger) ── */
+    if ('IntersectionObserver' in window) {
+      const opts = { threshold: 0.15, rootMargin: '0px 0px -8% 0px' };
+      function makeIO(addClass) {
+        return new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add(addClass); e.target._io?.unobserve(e.target); }
+          });
+        }, opts);
+      }
+      [
+        ['.reveal-on-scroll', 'revealed'],
+        ['.sol-left, .sol-right, .sol-scale', 'sol-in'],
+        ['.sol-stagger', 'sol-in'],
+      ].forEach(([sel, cls]) => {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add(cls); io.unobserve(e.target); }
+          });
+        }, sel.includes('stagger') ? { threshold: 0.1, rootMargin: '0px 0px -5% 0px' } : opts);
+        document.querySelectorAll(sel).forEach(el => io.observe(el));
+      });
+    } else {
+      document.querySelectorAll('.reveal-on-scroll,.sol-left,.sol-right,.sol-scale,.sol-stagger').forEach(el => {
+        el.classList.add('revealed','sol-in');
+      });
+    }
+
+    /* ── CURSOR GLOW (desktop only) ── */
+    if (!REDUCE && !TOUCH) {
+      const glow = document.getElementById('sol-cglow');
+      if (glow) {
+        let gx = innerWidth/2, gy = innerHeight/2, tx = gx, ty = gy;
+        document.addEventListener('pointermove', e => {
+          tx = e.clientX; ty = e.clientY;
+          document.body.classList.add('sol-alive');
+        });
+        (function loop() {
+          gx += (tx-gx)*.065; gy += (ty-gy)*.065;
+          glow.style.transform = `translate(${gx-260}px,${gy-260}px)`;
+          requestAnimationFrame(loop);
+        })();
+      }
+
+      /* ── 3D CARD TILT (flavor cards) ── */
+      document.querySelectorAll('.flavor-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - .5;
+          const y = (e.clientY - r.top) / r.height - .5;
+          card.style.transform = `perspective(700px) rotateY(${x*9}deg) rotateX(${-y*7}deg) translateY(-5px)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+
+      /* ── MAGNETIC BUTTONS ── */
+      document.querySelectorAll('.sol-mag').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.13}px,${(e.clientY-r.top-r.height/2)*.22}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      });
+
+      /* ── HERO 3D TILT (on cursor move in hero) ── */
+      const heroSection = document.getElementById("hero-section");
+      const heroCanContainer = document.getElementById("hero-can-container");
+      let canReady2 = false;
+      setTimeout(() => { canReady2 = true; }, 1600);
+      if (heroSection && heroCanContainer) {
+        heroSection.addEventListener("mousemove", e => {
+          if (!canReady2) return;
+          const r = heroSection.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - .5;
+          const y = (e.clientY - r.top)  / r.height - .5;
+          heroCanContainer.style.transform = `perspective(1000px) rotateX(${-y*18}deg) rotateY(${x*22}deg) translate3d(${x*12}px,${y*12}px,0)`;
+        });
+        heroSection.addEventListener("mouseleave", () => {
+          heroCanContainer.style.transform = '';
+        });
+      }
+    } else {
+      // Touch: still need hero 3D tilt off
+      const heroSection = document.getElementById("hero-section");
+      const heroCanContainer = document.getElementById("hero-can-container");
+      if (heroSection && heroCanContainer) {
+        heroSection.addEventListener("mousemove", e => {
+          const r = heroSection.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - .5;
+          const y = (e.clientY - r.top)  / r.height - .5;
+          heroCanContainer.style.transform = `perspective(1000px) rotateX(${-y*18}deg) rotateY(${x*22}deg) translate3d(${x*12}px,${y*12}px,0)`;
+        });
+        heroSection.addEventListener("mouseleave", () => {
+          heroCanContainer.style.transform = '';
+        });
+      }
+    }
+
+    /* ── RIPPLE ── */
+    document.querySelectorAll('.sol-rip').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const r = btn.getBoundingClientRect();
+        const rip = document.createElement('span');
+        rip.className = 'sol-ripple';
+        rip.style.left = (e.clientX - r.left - 5) + 'px';
+        rip.style.top  = (e.clientY - r.top  - 5) + 'px';
+        btn.appendChild(rip);
+        rip.addEventListener('animationend', () => rip.remove());
+      });
+    });
+
+    // Cart Drawer Elements
+    const cartDrawer = document.getElementById("cart-drawer");
+    const cartBackdrop = document.getElementById("cart-backdrop");
+    const cartPanel = document.getElementById("cart-panel");
+    const closeCart = document.getElementById("close-cart");
+    const shopTriggers = document.querySelectorAll(".shop-trigger");
+    const cartBadge = document.getElementById("cart-badge");
+    const drawerCount = document.getElementById("drawer-count");
+    const cartSubtotal = document.getElementById("cart-subtotal");
+    const cartItemsContainer = document.getElementById("cart-items-container");
+    const checkoutBtn = document.getElementById("checkout-btn");
+
+    function openCart() {
+      cartDrawer.classList.remove("pointer-events-none", "opacity-0");
+      cartPanel.classList.remove("translate-x-full");
+    }
+
+    function closeCartDrawer() {
+      cartPanel.classList.add("translate-x-full");
+      cartDrawer.classList.add("opacity-0");
+      setTimeout(() => {
+        cartDrawer.classList.add("pointer-events-none");
+      }, 300);
+    }
+
+    shopTriggers.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        openCart();
+      });
+    });
+
+    closeCart.addEventListener("click", closeCartDrawer);
+    cartBackdrop.addEventListener("click", closeCartDrawer);
+
+    // Toast Notification helper
+    const toast = document.getElementById("toast");
+    const toastMsg = document.getElementById("toast-msg");
+    let toastTimeout;
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 3000);
+    }
+
+    // Update Totals and Counts
+    function updateCartTotals() {
+      const items = cartItemsContainer.querySelectorAll(".cart-item");
+      let totalQty = 0;
+      let subtotal = 0;
+      items.forEach(item => {
+        const qty = parseInt(item.querySelector(".qty-val").textContent);
+        const price = parseFloat(item.dataset.price);
+        totalQty += qty;
+        subtotal += qty * price;
+      });
+      cartBadge.textContent = totalQty;
+      drawerCount.textContent = totalQty;
+      cartSubtotal.textContent = "€" + subtotal.toFixed(2);
+    }
+
+    // Cart Item quantity handlers
+    cartItemsContainer.addEventListener("click", (e) => {
+      const target = e.target;
+      const item = target.closest(".cart-item");
+      if (!item) return;
+
+      if (target.classList.contains("qty-plus")) {
+        const qtyVal = item.querySelector(".qty-val");
+        qtyVal.textContent = parseInt(qtyVal.textContent) + 1;
+        updateCartTotals();
+      } else if (target.classList.contains("qty-minus")) {
+        const qtyVal = item.querySelector(".qty-val");
+        let current = parseInt(qtyVal.textContent);
+        if (current > 1) {
+          qtyVal.textContent = current - 1;
+          updateCartTotals();
+        }
+      } else if (target.closest(".remove-item")) {
+        item.remove();
+        updateCartTotals();
+        showToast("Item removed from cart");
+      }
+    });
+
+    // Add to cart buttons across the page
+    document.querySelectorAll(".add-cart-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const name = btn.dataset.name;
+        const price = btn.dataset.price;
+        
+        let existingItem = Array.from(cartItemsContainer.querySelectorAll(".cart-item")).find(el => el.querySelector("h4").textContent.includes(name));
+        if (existingItem) {
+          const qtyVal = existingItem.querySelector(".qty-val");
+          qtyVal.textContent = parseInt(qtyVal.textContent) + 1;
+        } else {
+          const newItem = document.createElement("div");
+          newItem.className = "flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/20 cart-item transition-all duration-300 hover:shadow-md";
+          newItem.dataset.price = price;
+          newItem.innerHTML = `
+            <div class="w-16 h-16 rounded-xl bg-solar-yellow/20 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-deep-forest">local_bar</span>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-headline-sm text-sm text-deep-forest font-bold">${name} (330ml)</h4>
+              <p class="font-body-sm text-xs text-on-surface-variant">€${price} each</p>
+              <div class="flex items-center gap-3 mt-2">
+                <button class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-deep-forest font-bold text-xs qty-minus transition-transform active:scale-95">-</button>
+                <span class="font-headline-sm text-xs font-bold qty-val">1</span>
+                <button class="w-6 h-6 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center font-bold text-xs qty-plus transition-transform active:scale-95">+</button>
+              </div>
+            </div>
+            <button class="text-error hover:opacity-80 remove-item cursor-pointer transition-transform hover:scale-110">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          `;
+          cartItemsContainer.appendChild(newItem);
+        }
+        updateCartTotals();
+        showToast(`${name} added to cart!`);
+      });
+    });
+
+    checkoutBtn.addEventListener("click", () => {
+      showToast("Redirecting to secure EU checkout...");
+      setTimeout(() => {
+        closeCartDrawer();
+      }, 1500);
+    });
+
+    // Quick View Modal
+    const modal = document.getElementById("quickview-modal");
+    const modalBackdrop = document.getElementById("modal-backdrop");
+    const modalPanel = document.getElementById("modal-panel");
+    const closeModal = document.getElementById("close-modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalTitle = document.getElementById("modal-title");
+    const modalTag = document.getElementById("modal-tag");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalPrice = document.getElementById("modal-price");
+    const modalAddBtn = document.getElementById("modal-add-btn");
+
+    let currentModalProduct = null;
+
+    document.querySelectorAll(".flavor-card").forEach(card => {
+      card.addEventListener("click", (e) => {
+        if(e.target.closest("button")) return;
+        const title = card.dataset.title;
+        const tag = card.dataset.tag;
+        const desc = card.dataset.desc;
+        const price = card.dataset.price;
+        const img = card.dataset.img;
+
+        modalImg.src = img;
+        modalTitle.textContent = title;
+        modalTag.textContent = tag;
+        modalDesc.textContent = desc;
+        modalPrice.textContent = price;
+
+        currentModalProduct = { title, price: "2.90" };
+
+        modal.classList.remove("pointer-events-none", "opacity-0");
+        modalPanel.classList.remove("scale-95");
+        modalPanel.classList.add("scale-100");
+      });
+    });
+
+    function closeQuickModal() {
+      modalPanel.classList.remove("scale-100");
+      modalPanel.classList.add("scale-95");
+      modal.classList.add("opacity-0");
+      setTimeout(() => {
+        modal.classList.add("pointer-events-none");
+      }, 300);
+    }
+
+    closeModal.addEventListener("click", closeQuickModal);
+    modalBackdrop.addEventListener("click", closeQuickModal);
+
+    modalAddBtn.addEventListener("click", () => {
+      if(currentModalProduct) {
+        const name = currentModalProduct.title;
+        const price = currentModalProduct.price;
+        let existingItem = Array.from(cartItemsContainer.querySelectorAll(".cart-item")).find(el => el.querySelector("h4").textContent.includes(name));
+        if (existingItem) {
+          const qtyVal = existingItem.querySelector(".qty-val");
+          qtyVal.textContent = parseInt(qtyVal.textContent) + 1;
+        } else {
+          const newItem = document.createElement("div");
+          newItem.className = "flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/20 cart-item transition-all duration-300 hover:shadow-md";
+          newItem.dataset.price = price;
+          newItem.innerHTML = `
+            <div class="w-16 h-16 rounded-xl bg-solar-yellow/20 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-deep-forest">local_bar</span>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-headline-sm text-sm text-deep-forest font-bold">${name} (330ml)</h4>
+              <p class="font-body-sm text-xs text-on-surface-variant">€${price} each</p>
+              <div class="flex items-center gap-3 mt-2">
+                <button class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-deep-forest font-bold text-xs qty-minus transition-transform active:scale-95">-</button>
+                <span class="font-headline-sm text-xs font-bold qty-val">1</span>
+                <button class="w-6 h-6 rounded-full bg-deep-forest text-warm-cream flex items-center justify-center font-bold text-xs qty-plus transition-transform active:scale-95">+</button>
+              </div>
+            </div>
+            <button class="text-error hover:opacity-80 remove-item cursor-pointer transition-transform hover:scale-110">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          `;
+          cartItemsContainer.appendChild(newItem);
+        }
+        updateCartTotals();
+        showToast(`${name} added to cart!`);
+        closeQuickModal();
+      }
+    });
+
+    // Newsletter Form
+    const newsletterForm = document.getElementById("newsletter-form");
+    const newsletterInput = document.getElementById("newsletter-input");
+    const newsletterBtn = document.getElementById("newsletter-btn");
+
+    newsletterForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if(newsletterInput.value) {
+        newsletterBtn.textContent = "Thank you for subscribing!";
+        newsletterBtn.classList.remove("bg-solar-yellow", "text-deep-forest");
+        newsletterBtn.classList.add("bg-fresh-leaf", "text-warm-cream");
+        newsletterInput.value = "";
+        newsletterInput.disabled = true;
+        showToast("Successfully subscribed to seasonal harvests!");
+      }
+    });
+
+    // Store Locator dynamic update
+    const cityCards = document.querySelectorAll(".city-card");
+    const storeTitle = document.getElementById("store-title");
+    const storeAddress = document.getElementById("store-address");
+    const storeInput = document.getElementById("store-input");
+    const storeSearchBtn = document.getElementById("store-search-btn");
+
+    cityCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const city = card.dataset.city;
+        const address = card.dataset.address;
+        storeTitle.textContent = `SOLARO Flagship • ${city}`;
+        storeAddress.textContent = address;
+        showToast(`Showing stockists for ${city}`);
+      });
+    });
+
+    storeSearchBtn.addEventListener("click", () => {
+      const val = storeInput.value.trim();
+      if(val) {
+        storeTitle.textContent = `SOLARO Stockists • ${val}`;
+        storeAddress.textContent = `Multiple boutique partners found in ${val} • Open Today`;
+        showToast(`Found stockists near ${val}!`);
+        storeInput.value = "";
+      }
+    });
+
+  }); // DOMContentLoaded
+})(); // IIFE
+</script>
+</body></html>
