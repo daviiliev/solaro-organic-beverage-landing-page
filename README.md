@@ -1,6 +1,6 @@
 # SOLARO — Organic Botanical Energy
 
-Link to the landing page: 
+Link to the landing page: https://daviiliev.github.io/solaro-organic-beverage-landing-page/
 
 A premium landing page concept for SOLARO, a fictional organic beverage brand focused on botanical ingredients, natural flavors and energetic modern living.
 
